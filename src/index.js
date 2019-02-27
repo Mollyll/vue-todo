@@ -10,9 +10,10 @@ Vue.use(notify)
 
 import './assets/styles/global.styl'
 
-const root = document.createElement('div')
-document.body.appendChild(root)
+// const root = document.createElement('div')
+// document.body.appendChild(root)
 
 new Vue({
+    el: '#root',
   render: (h) => h(App)
-}).$mount(root)
+})

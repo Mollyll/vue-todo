@@ -53,16 +53,19 @@ const config = {
         ]
     },
     plugins: [
+        new HTMLPlugin({
+            template: path.join(__dirname, 'template.html')
+        }),
         new webpack.DefinePlugin({
             'process.env': {
                 NODE_ENV: isDev ? '"development"' : '"production"'
             }
-        }),
-        new HTMLPlugin(),
+        })
+        /*new HTMLPlugin(),
         new webpack.ProvidePlugin({
             jQuery: "jquery",
             $: "jquery"
-        })
+        })*/
     ]
 }
 
@@ -102,7 +105,7 @@ if (isDev) {
     config.output.filename = '[name].[chunkhash:8].js'
     config.module.rules.push(
         {
-            test: /\.styl/,
+            test: /\.(styl|css)/,
             use: ExtractPlugin.extract({
                 fallback: 'style-loader',
                 use: [
