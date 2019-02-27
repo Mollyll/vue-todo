@@ -1,7 +1,12 @@
 import Vue from 'vue'
 import App from './app.vue'
-import $ from 'jquery'
-import boot from 'bootstrap-vue'
+import confirm from './components/confirm/index.js'
+import notify from './components/notification/index.js'
+
+import './assets/font/iconfont.css'
+
+Vue.use(confirm)
+Vue.use(notify)
 
 import './assets/styles/global.styl'
 

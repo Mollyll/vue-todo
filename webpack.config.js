@@ -23,6 +23,11 @@ const config = {
                 loader: 'babel-loader'
             },
             {
+                test: /\.js$/,
+                loader: 'babel-loader',
+                exclude: /node_modules/
+            },
+            {
                 test: /\.(gif|jpg|jpeg|png|svg)$/,
                 use: [
                     {
@@ -30,6 +35,17 @@ const config = {
                         options: {
                             limit: 1024,
                             name: '[name]-aaa.[ext]'
+                        }
+                    }
+                ]
+            },
+            {
+                test:/\.(woff|woff2|ttf|eot)$/,
+                use: [
+                    {
+                        loader:'url-loader',
+                        options: {
+                            limit: 100000,  //这里要足够大这样所有的字体图标都会打包到css中
                         }
                     }
                 ]
@@ -52,7 +68,7 @@ const config = {
 
 if (isDev) {
     config.module.rules.push({
-        test: /\.styl/,
+        test: /\.(styl|css)/,
         use: [
             'style-loader',
             'css-loader',

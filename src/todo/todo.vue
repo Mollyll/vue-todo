@@ -54,6 +54,9 @@ export default {
         completed: false
       })
       e.target.value = ''
+        this.$notify({
+            content: e.target.value.trim() + " is added into todos."
+        })
     },
     deleteTodo(id) {
       this.todos.splice(this.todos.findIndex(todo => todo.id === id), 1)
